@@ -1,14 +1,35 @@
-$brand-color: blue;
-$red-color: red;
+// $brand-color: blue;
+// $red-color: red;
 
-.blue {
-  color: $brand-color;
+// .blue {
+//   color: $brand-color;
+// }
+
+// .red {
+//   color: $red-color;
+// }
+
+// .dontuse {
+//   color: red;
+// }
+
+body {
+  text-align: center;
+  font-size: 20px;
+  padding: 2.5%;
+  font-family: 'RobotoCondensed';
 }
 
-.red {
-  color: $red-color;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'EconomicaBold';
 }
 
-.dontuse {
-  color: red;
+.profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
 }

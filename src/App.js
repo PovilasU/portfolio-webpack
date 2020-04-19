@@ -1,39 +1,44 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from 'react';
+import Projects from './Projects';
+import SocialProfiles from './SocialProfiles';
+import profile from './assets/profile.png';
 
-import About from './components/About';
-import Home from './components/Home';
-import Blog from './components/Blog';
+class App extends Component {
+  state = { displayBio: false };
 
-function App() {
-  return (
-    <BrowserRouter>
+  toggleDisplayBio = () => {
+    this.setState({ displayBio: !this.state.displayBio });
+  };
+
+  render() {
+    return (
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/blog">Blog</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about" component={About} />
-          <Route path="/blog" component={Blog} />
-          <Route exact path="/" component={Home} />
-        </Switch>
+        <img src={profile} alt="profile" className="profile" />
+        <h1>Hello!</h1>
+        <p>My name is Povilas. I'am a software engineer.</p>
+        <p>I'm always looking forward to work on meaningful projects.</p>
+        {this.state.displayBio ? (
+          <div>
+            <p>I live in Oslo, and code every day.</p>
+            <p>
+              My favorite language is JavaScript, and I think React.js is
+              awesome.
+            </p>
+            <p>Besides coding, I also love movies and music!</p>
+            <button onClick={this.toggleDisplayBio}>Show less</button>
+          </div>
+        ) : (
+          <div>
+            <button onClick={this.toggleDisplayBio}>Read more</button>
+          </div>
+        )}
+        <hr />
+        <Projects />
+        <hr />
+        <SocialProfiles />
       </div>
-    </BrowserRouter>
-  );
+    );
+  }
 }
-serviceWorker.register();
+
 export default App;
